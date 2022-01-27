@@ -1,6 +1,6 @@
 #### 获取工具
 ```shell
-npm install -g @y-npm/tinify
+npm install -g @my-utils/tinify
 ```
 
 #### 使用工具
