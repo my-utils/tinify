@@ -5,7 +5,12 @@ const fs = require('fs')
 const tinify = require('tinify');
 const ora = require('ora')
 
-tinify.key = 'rv72TV007SJ82jpJCjsPhR5jk0RgNPdn';
+const keys = [
+  'rv72TV007SJ82jpJCjsPhR5jk0RgNPdn',
+  'vwX92xFzfDw2DVnypFPL1bhNjWbJtk4j',
+  'fm4p58DwV7CP85Gf4fQtMqfJNDn9TJZP'
+];
+
 
 const CWD_PATH = process.cwd()
 const USER_PATH = process.argv[2] || './'
@@ -38,6 +43,7 @@ function compress(filePath) {
   const spinner = ora(`${file}压缩中...`).start();
 
   return new Promise((resolve) => {
+    tinify.key = keys[parseInt(Math.random()*3)]
     tinify.fromFile(filePath).toFile(filePath).then(res => {
       spinner.succeed(`${file}压缩完成`)
       resolve()
