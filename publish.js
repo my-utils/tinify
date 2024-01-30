@@ -5,16 +5,16 @@ function runShell(shell) {
   return new Promise((resolve, reject) => {
     process.exec(shell, function (error, stdout, stderr) {
       if (error) {
-        console.log(`执行错误: ${error.message}`);
+        console.log(`执行错误: ${error.message}`)
         reject(error.message)
-        return;
+        return
       }
       if (stderr) {
         // console.log(`执行存在异常: ${stderr}`);
         // reject(stderr)
         // return;
       }
-      console.log(`执行成功: ${stdout}`);
+      console.log(`执行成功: ${stdout}`)
       resolve(stdout)
     })
   })
