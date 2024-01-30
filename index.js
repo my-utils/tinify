@@ -14,7 +14,8 @@ const keys = [
 const CWD_PATH = process.cwd()
 const USER_PATH = process.argv[2] || './'
 const IMG_PATH = path.join(CWD_PATH, USER_PATH)
-const extList = ['.png', '.jpg']
+const extList = ['.png', '.jpg', '.jpeg']
+const discardDirList = ['node_modules', 'dist']
 
 function findFilePath(dirPath) {
   const files = fs.readdirSync(dirPath)
@@ -22,7 +23,7 @@ function findFilePath(dirPath) {
     throw new Error('没有可用的文件')
   }
   const dirList = files
-    .filter((i) => !/^\./.test(i) && !['node_modules'].includes(i))
+    .filter((i) => !/^\./.test(i) && !discardDirList.includes(i))
     .filter((i) => fs.statSync(path.join(dirPath, i)).isDirectory())
   let list = files
     .filter((i) => extList.includes(path.extname(i)) && fs.statSync(path.join(dirPath, i)).isFile())
@@ -44,6 +45,7 @@ function readdir(dirPath) {
   try {
     const list = findFilePath(dirPath)
     console.log('文件列表', list)
+    console.log('文件列表总条数', list.length)
     if (list.length === 0) {
       throw new Error('没有可用的图片文件,当前仅支持对 .png .jpg 的文件进行压缩')
     }
