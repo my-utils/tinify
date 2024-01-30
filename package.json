@@ -1,6 +1,6 @@
 {
   "name": "@my-utils/tinify",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "this is a node shell",
   "author": "winnerwly<winnerwly@gmail.com>",
   "main": "index.js",
