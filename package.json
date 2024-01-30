@@ -1,6 +1,6 @@
 {
   "name": "@my-utils/tinify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "this is a node shell",
   "author": "winnerwly<winnerwly@gmail.com>",
   "main": "index.js",
@@ -12,12 +12,18 @@
     "url": "https://github.com/my-utils/tinify"
   },
   "homepage": "https://github.com/my-utils/tinify/",
+  "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://maven.jtexpress.com.cn/nexus/content/repositories/npm-hosted-2/"
   },
   "license": "ISC",
   "dependencies": {
     "ora": "^5.4.1",
     "tinify": "^1.6.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "standard-version": "^9.5.0"
   }
 }

@@ -17,15 +17,32 @@ const USER_PATH = process.argv[2] || './'
 const IMG_PATH = path.join(CWD_PATH, USER_PATH)
 const extList = ['.png', '.jpg']
 
+function findFilePath(dirPath) {
+  const files = fs.readdirSync(dirPath)
+  if (files.length === 0) {
+    throw new Error('没有可用的文件')
+  }
+  const dirList = files.filter(i =>!/^\./.test(i)&& !['node_modules'].includes(i) ).filter(i => fs.statSync(path.join(dirPath, i)).isDirectory())
+  let list = files.filter(i => extList.includes(path.extname(i)) && fs.statSync(path.join(dirPath, i)).isFile()).map(i => path.join(dirPath, i))
+  if (dirList && dirList.length > 0) {
+    dirList.forEach(i => {
+      const children = findFilePath(path.join(dirPath, i))
+      if (children && children.length>0) {
+        list = list.concat(children)
+      }
+    })
+  }
+  return list
+
+}
+
+
 // 解析目录
 function readdir(dirPath) {
   const spinner = ora('目录解析中...').start();
   try {
-    const files = fs.readdirSync(dirPath)
-    if (files.length === 0) {
-      throw new Error('没有可用的文件')
-    }
-    const list = files.filter(i => extList.includes(path.extname(i)) && fs.statSync(path.join(dirPath, i)).isFile())
+    const list = findFilePath(dirPath)
+    console.log('文件列表', list)
     if (list.length === 0) {
       throw new Error('没有可用的图片文件,当前仅支持对 .png .jpg 的文件进行压缩')
     }
@@ -72,11 +89,12 @@ async function start() {
   try {
     const checkResult = check(IMG_PATH)
     if (checkResult.isDirectory()) {
+      console.log('当前是目录')
       const files = readdir(IMG_PATH)
 
       for (let i = 0; i < files.length; i++) {
         try {
-          compress(path.join(IMG_PATH, files[i]))
+         await compress(files[i])
         } catch (error) {
           console.log('error', error)
         }
