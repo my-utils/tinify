@@ -8,7 +8,8 @@ const ora = require('ora')
 const keys = [
   'rv72TV007SJ82jpJCjsPhR5jk0RgNPdn',
   'vwX92xFzfDw2DVnypFPL1bhNjWbJtk4j',
-  'fm4p58DwV7CP85Gf4fQtMqfJNDn9TJZP'
+  'fm4p58DwV7CP85Gf4fQtMqfJNDn9TJZP',
+  'jV2zGQJK2w35Flp9FB6b6lmvSb8C32lX' // 同亮的key
 ]
 
 const CWD_PATH = process.cwd()
