@@ -9,7 +9,10 @@ const keys = [
   'rv72TV007SJ82jpJCjsPhR5jk0RgNPdn',
   'vwX92xFzfDw2DVnypFPL1bhNjWbJtk4j',
   'fm4p58DwV7CP85Gf4fQtMqfJNDn9TJZP',
-  'jV2zGQJK2w35Flp9FB6b6lmvSb8C32lX' // 同亮的key
+  'jV2zGQJK2w35Flp9FB6b6lmvSb8C32lX', // 同亮的key
+  'tpfFgX56LJSqTvWF4klmLyKPQx9rG1tK', // 传发的key
+  'wv1hd49KQmB07rPPXlDbXt1kkLZdJS63', // 随机邮箱
+  'KFkBLJ3y03h1MNvckYlFjrSYPxY14SJq' // 随机邮箱
 ]
 
 const CWD_PATH = process.cwd()
