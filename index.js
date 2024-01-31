@@ -12,7 +12,8 @@ const keys = [
   'jV2zGQJK2w35Flp9FB6b6lmvSb8C32lX', // 同亮的key
   'tpfFgX56LJSqTvWF4klmLyKPQx9rG1tK', // 传发的key
   'wv1hd49KQmB07rPPXlDbXt1kkLZdJS63', // 随机邮箱
-  'KFkBLJ3y03h1MNvckYlFjrSYPxY14SJq' // 随机邮箱
+  'KFkBLJ3y03h1MNvckYlFjrSYPxY14SJq', // 随机邮箱
+  'Lm89ywfXnkXgp80crnB0BK9VMDw2gTyX' // 传发的邮箱
 ]
 
 const CWD_PATH = process.cwd()
