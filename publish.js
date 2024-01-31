@@ -22,6 +22,6 @@ function runShell(shell) {
 async function start() {
   await runShell('standard-version')
   await runShell('git push --follow-tags origin master')
-  await runShell('npm publish')
+  await runShell('yarn publish')
 }
 start()
