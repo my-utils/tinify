@@ -13,6 +13,7 @@ const keys = [
 
 const CWD_PATH = process.cwd()
 const USER_PATH = process.argv[2] || './'
+const size = process.argv[3] || '1024'
 const IMG_PATH = path.join(CWD_PATH, USER_PATH)
 const extList = ['.png', '.jpg', '.jpeg']
 const discardDirList = ['node_modules', 'dist']
@@ -59,6 +60,11 @@ function readdir(dirPath) {
 
 // 压缩图片
 function compress(filePath) {
+  const stats = fs.statSync(filePath)
+  if (Number(stats.size) < Number(size)) {
+    console.log(`文件大小:【${stats.size}】<忽略大小【${size}】,自动忽略`)
+    return true
+  }
   const file = path.basename(filePath)
   const spinner = ora(`${file}压缩中...`).start()
 
